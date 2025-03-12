@@ -1,5 +1,4 @@
-const ligada = document.getElementById("ligada");
-const desligada = document.getElementById("desligada");
+const ligada = document.getElementById("ligardesligar");
 
 const lampada = document.getElementById("lampada");
 
@@ -24,9 +23,30 @@ function desligarLampada(){
 function quebrarLampada(){
     lampada.src = "./img/quebrada.jpg"
 }
-ligada.addEventListener("click", ligarLampada);
-lampada.addEventListener("mouseover",ligarLampada)
-desligada.addEventListener("click", desligarLampada);
-lampada.addEventListener("mouseleave",desligarLampada)
 
+
+function ligaeDesliga(){
+    if(!retornaQuebrada()){
+        if(ligardesligar.textContent === "ligar"){
+            ligarLampada()
+            ligardesligar.textContent = "desligar"
+        }else{
+            desligarLampada()
+            ligardesligar.textContent = "ligar"
+        }
+    }
+    
+}
+
+ligardesligar.addEventListener("click", ligaeDesliga);
+
+
+
+
+
+
+
+
+lampada.addEventListener("mouseover",ligarLampada)
+lampada.addEventListener("mouseleave",desligarLampada)
 lampada.addEventListener("dblclick",quebrarLampada)
